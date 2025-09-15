@@ -61,8 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const images = [
-        '/images/mountain_landscape.jpg',
-        '/images/virgin_gorda_rocks.jpg',
+        './images/mountain_landscape.jpg',
+        './images/virgin_gorda_rocks.jpg',
     ];
 
     function setRandomBackground() {
