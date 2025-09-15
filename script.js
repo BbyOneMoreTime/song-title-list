@@ -59,4 +59,16 @@ document.addEventListener('DOMContentLoaded', () => {
             resultsDiv.textContent = `Không có cái gì là "${searchTerm}".`;
         }
     }
+
+    const images = [
+        '/images/mountain_landscape.jpg',
+        '/images/virgin_gorda_rocks.jpg',
+    ];
+
+    function setRandomBackground() {
+        const randomImage = images[Math.floor(Math.random() * images.length)];
+        document.body.style.backgroundImage = `url('${randomImage}')`;
+    }
+
+    window.onload = setRandomBackground;
 });
