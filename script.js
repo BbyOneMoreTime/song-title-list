@@ -63,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const images = [
         './images/mountain_landscape.jpg',
         './images/virgin_gorda_rocks.jpg',
+        './images/Chapter3_2_web_10.JPG',
     ];
 
     function setRandomBackground() {
