@@ -13,13 +13,18 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(preloadedNamesText => {
             names = preloadedNamesText.split(',').map(name => name.trim()).filter(name => name !== '');
-            resultsDiv.textContent = "Load được rùi";
+            showAllSongs();
         })
         .catch(error => {
             console.error('Error loading names from musicstore.txt:', error);
             resultsDiv.textContent = `Error: Could not load names from musicstore.txt. Please ensure the file exists.`;
         });
+
     searchButton.addEventListener('click', () => {
+        performSearch();
+    });
+
+    searchInput.addEventListener('input', () => {
         performSearch();
     });
 
@@ -28,17 +33,18 @@ document.addEventListener('DOMContentLoaded', () => {
             performSearch();
         }
     });
+
     function performSearch() {
         const searchTerm = searchInput.value.trim();
         resultsDiv.innerHTML = '';
 
-        if (searchTerm === '') {
-            resultsDiv.textContent = 'Nhập gì đó để tìm';
+        if (names.length === 0) {
+            resultsDiv.textContent = 'Ẩu rồi, nhập lại đê.';
             return;
         }
 
-        if (names.length === 0) {
-            resultsDiv.textContent = 'Ẩu rồi, nhập lại đê.';
+        if (searchTerm === '') {
+            showAllSongs();
             return;
         }
 
@@ -58,6 +64,21 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             resultsDiv.textContent = `Không có cái gì là "${searchTerm}".`;
         }
+    }
+
+    function showAllSongs() {
+        resultsDiv.innerHTML = '<b>Danh sách tất cả bài hát:</b>';
+        if (names.length === 0) {
+            resultsDiv.innerHTML += '<p>Chưa có dữ liệu.</p>';
+            return;
+        }
+        const ul = document.createElement('ul');
+        names.forEach(name => {
+            const li = document.createElement('li');
+            li.textContent = name;
+            ul.appendChild(li);
+        });
+        resultsDiv.appendChild(ul);
     }
 
     const images = [
