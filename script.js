@@ -72,13 +72,13 @@ document.addEventListener('DOMContentLoaded', () => {
             resultsDiv.innerHTML += '<p>Chưa có dữ liệu.</p>';
             return;
         }
-        const ul = document.createElement('ul');
+        const ol = document.createElement('ol');
         names.forEach(name => {
             const li = document.createElement('li');
             li.textContent = name;
-            ul.appendChild(li);
+            ol.appendChild(li);
         });
-        resultsDiv.appendChild(ul);
+        resultsDiv.appendChild(ol);
     }
 
     const images = [
