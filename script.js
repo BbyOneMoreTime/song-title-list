@@ -12,7 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return response.text();
         })
         .then(preloadedNamesText => {
-            names = preloadedNamesText.split(',').map(name => name.trim()).filter(name => name !== '');
+            const splitText = preloadedNamesText.split('--------------------------------------------')[0];
+            names = splitText.split(',').map(name => name.trim()).filter(name => name !== '');
             showAllSongs();
         })
         .catch(error => {
